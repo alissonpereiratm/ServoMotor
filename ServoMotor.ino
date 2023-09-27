@@ -1,19 +1,27 @@
 #include "Servo.h"
 
-Servo meuservo;
-int angulo = 0; 
-int incremento = 10; 
+Servo meuservo1;
+Servo meuservo2;
+int angulo1 = 0; 
+int angulo2 = 0; 
+int incremento = 5; 
 
 void setup() {
-  meuservo.attach(9); 
+  meuservo1.attach(9); 
+  meuservo2.attach(10); 
 }
 
 void loop() {
-  while (angulo <= 360) {
-    meuservo.write(angulo);
-    delay(1500); 
-    angulo += incremento; 
-  }
-
-  delay(2000); 
+  while (angulo1 <= 90) {
+    meuservo2.write(angulo2);
+    meuservo1.write(angulo1);
+    delay(500); 
+    angulo1 += incremento;
+      }
+  if (angulo1 >= 90) {
+    meuservo2.write(angulo2);
+     delay(500); 
+    angulo2 += incremento; 
+    angulo1 = 0;
+     }
 }
